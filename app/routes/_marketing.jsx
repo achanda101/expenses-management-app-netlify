@@ -9,7 +9,7 @@ export function links() {
 export default function MarketingLayout() {
     return (
         <>
-            {/* <MainHeader /> */}
+            <MainHeader />
             <Outlet />
         </>
     )
