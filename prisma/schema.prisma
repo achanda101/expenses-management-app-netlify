@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// @map("_id") ensures that Prisma will add an extra _id field in our MongoDB database 
+// in which the ID is stored and maps that to an "id" field when we work with the data in our code here.
+// @db.ObjectId is the internal type in MongoDB
+model Expense {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  amount    Float
+  date      DateTime
+  dateAdded DateTime @default(now())
+}
